@@ -1,0 +1,8 @@
+
+            <!--<ListBox x:Name="lstImages">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding ImageFile}" Width="100" Height="100"/>
+                        </DataTemplate>
+</ListBox.ItemTemplate>
+            </ListBox>-->

@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9CB49378-CA0B-4DC5-996F-8ADC1F447DDC}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DropboxSync</RootNamespace>
+    <AssemblyName>DropboxSync</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>DropboxSync.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>DropboxSync.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\packages\BindableApplicationBar.1.0.0\lib\sl4-windowsphone71\BindableApplicationBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DropNet.WindowsPhone">
+      <HintPath>..\packages\DropNet.1.9.3\lib\sl4-wp71\DropNet.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\sl4-windowsphone71\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\packages\DropNet.1.9.3\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeFolderTemplate.xaml.cs">
+      <DependentUpon>ChangeFolderTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Handlers\AuthenticateWithDropboxCommandHandler.cs" />
+    <Compile Include="Commands\AuthenticateWithDropboxCommand.cs" />
+    <Compile Include="DomainEvents\PictureUploadedToDropbox.cs" />
+    <Compile Include="DomainEvents\PictureSyncCountUpdated.cs" />
+    <Compile Include="Commands\Handlers\PopulateDropboxFolderStructureCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\PopulateMetadataCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\SyncImagesNowCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\UpdatePicturesToSyncCommandHandler.cs" />
+    <Compile Include="Commands\PopulateDropboxFolderStructureCommand.cs" />
+    <Compile Include="Commands\PopulateMetadataCommand.cs" />
+    <Compile Include="Commands\SyncImagesNowCommand.cs" />
+    <Compile Include="Commands\UpdatePicturesToSyncCommand.cs" />
+    <Compile Include="Commands\UploadPictureToDropbox.cs" />
+    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\DelegateCommand.cs" />
+    <Compile Include="Core\AppSettings.cs" />
+    <Compile Include="Core\PageDefinitionAttribute.cs" />
+    <Compile Include="Core\SettingsResolver.cs" />
+    <Compile Include="Core\UserSettings.cs" />
+    <Compile Include="CQRS\Command.cs" />
+    <Compile Include="CQRS\CommandExecutor.cs" />
+    <Compile Include="CQRS\CommandResult.cs" />
+    <Compile Include="CQRS\CommandStatus.cs" />
+    <Compile Include="CQRS\CommandTypesRegistry.cs" />
+    <Compile Include="CQRS\ICommandExecutor.cs" />
+    <Compile Include="CQRS\ICommandHandler.cs" />
+    <Compile Include="CQRS\ReflectingCommandTypesResolver.cs" />
+    <Compile Include="CQRS\Resolver.cs" />
+    <Compile Include="DropboxAuthenticate.xaml.cs">
+      <DependentUpon>DropboxAuthenticate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DropboxFolders.xaml.cs">
+      <DependentUpon>DropboxFolders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\MessageBoxHelpers.cs" />
+    <Compile Include="Helpers\PageHelpers.cs" />
+    <Compile Include="Helpers\ViewModelHelpers.cs" />
+    <Compile Include="Helpers\VisibilityConverter.cs" />
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectiveSync.xaml.cs">
+      <DependentUpon>SelectiveSync.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectiveSync.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shared\GeneralResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shared\LightStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="ViewModels\Pages\HelpAboutViewModel.cs" />
+    <Compile Include="ViewModels\MasterViewModel.cs" />
+    <Compile Include="ViewModels\NavigationalPages.cs" />
+    <Compile Include="ViewModels\Pages\ChangeDropBoxFolderViewModel.cs" />
+    <Compile Include="ViewModels\Pages\ChangeFolderTemplateViewModel.cs" />
+    <Compile Include="ViewModels\Pages\DropboxAuthenticationViewModel.cs" />
+    <Compile Include="Core\DropboxFolder.cs" />
+    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SelectiveSyncViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="ChangeFolderTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DropboxAuthenticate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DropboxFolders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Images\upload.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Images\dropboxbackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Include="Images\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\check_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Images\folder.png" />
+    <None Include="Images\questionmark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)Tools\NotifyPropertyWeaverMsBuildTask.dll" />
+  <Target Name="AfterCompile">
+    <NotifyPropertyWeaverMsBuildTask.WeavingTask />
+  </Target>
+</Project>
